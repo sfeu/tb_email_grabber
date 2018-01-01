@@ -1,0 +1,2 @@
+content	tb_email_grabber content/
+overlay chrome://messenger/content/messenger.xul chrome://tb_email_grabber/content/myhelloworld.xul
