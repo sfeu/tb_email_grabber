@@ -11,7 +11,7 @@ function saveAsCSV() {
 	fp.appendFilters(nsIFilePicker.filterAll | nsIFilePicker.filterText);
 	fp.open(function (rv) {
 		if (rv == nsIFilePicker.returnOK || rv == nsIFilePicker.returnReplace) {
-    			var result = convertArrayOfObjectsToCSV(extractSenders());
+    			var result = convertArrayOfObjectsToCSV({data:extractSenders(),columnDelimiter:'\t'});
 		
 			// write file 
 			//
@@ -59,7 +59,7 @@ function extractSenders() {
 function convertArrayOfObjectsToCSV(args) {  
         var result, ctr, keys, columnDelimiter, lineDelimiter, data;
 
-        data = args;
+        data = args.data;
         if (data == null || !data.length) {
             return null;
         }
