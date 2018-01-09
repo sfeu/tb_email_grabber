@@ -6,7 +6,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>tb_email_grabber@multi-access.de</em:id>
     <em:name>Thunderbird Email Grabber</em:name>
-    <em:version>1.1</em:version>
+    <em:version>1.2</em:version>
     <em:creator>Sebastian Feuerstack</em:creator>
    
     <em:targetApplication>

@@ -44,12 +44,21 @@ function extractSenders() {
                       .createInstance(Components.interfaces.nsIMsgHeaderParser);
 
 	var arr = [];
+	var double_check = {};
 
 	for (let msgHdr in fixIterator(gFolderDisplay.displayedFolder.messages, Components.interfaces.nsIMsgDBHdr)) {
-		 arr.push({
-			name: msgHeaderParser.extractHeaderAddressNames(msgHdr.author),
-        		email: msgHeaderParser.extractHeaderAddressMailboxes(msgHdr.author) 
-    		});
+		var email =  msgHeaderParser.extractHeaderAddressMailboxes(msgHdr.author).
+			toLowerCase(); 
+		if  (!double_check.hasOwnProperty(email)) { 
+		  	arr.push({
+				name: msgHeaderParser.extractHeaderAddressNames(msgHdr.author),
+        			email: email
+    		  	});
+			double_check[email]=1;
+		} else {
+			double_check[email]=double_check[email]+1; // TBD add count to CSV
+		}
+
 	}
 	return arr;
 }
