@@ -1,0 +1,6 @@
+{
+  "save_as_csv": {
+    "message": "Export all senders to CSV",
+    "description": "Extracts all sender names and corresponding email adresses and saves them into a CSV file."
+  }
+}

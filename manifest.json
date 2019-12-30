@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "Thunderbird Email Grabber",
+  "description": "Thunderbird extension that exports all senders' email and fullname of a folder to a CSV file. Icon made by Pixel perfect from www.flaticon.com",
+  "version": "2.4",
+  "author": "Sebastian Feuerstack",
+  "default_locale": "en",
+  "applications": {
+    "gecko": {
+      "id": "tb_email_grabber@multi-access.de",
+      "strict_min_version": "68.0"
+    }
+  },
+  "permissions": [
+    "accountsRead",
+    "messagesRead",
+    "downloads",
+    "menus"
+    ],
+    "background": {
+      "scripts": [
+        "background.js"
+      ]
+    },
+    "icons": {
+      "64": "images/tb_email_grabber_64px.png",
+      "32": "images/tb_email_grabber_32px.png",
+      "16": "images/tb_email_grabber_16px.png"
+    }
+}
