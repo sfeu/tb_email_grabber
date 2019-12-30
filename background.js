@@ -33,7 +33,7 @@ function exportAllCSV() {
 
   var double_check = {};
 
-  async function fetchSenders(messages){
+  function fetchSenders(messages){
     var arr = [];
 
     for (i in messages){
@@ -66,6 +66,7 @@ function exportAllCSV() {
             name: name,
             email: email
           });
+          console.log("name:"+name+" email:"+email);
           double_check[email]=1;
         } else {
           double_check[email]=double_check[email]+1; // TBD add count to CSV
@@ -85,12 +86,12 @@ function exportAllCSV() {
 
     while (page.id) {
       page = await browser.messages.continueList(page.id);
-      results = await results.concat(fetchSenders(page.messages));
+      await results.push(...fetchSenders(page.messages));
     }
+    console.log(results);
 
-    var csv = convertArrayOfObjectsToCSV({data:results,columnDelimiter:'\t'});
-
-    console.log(csv);
+    var csv = await convertArrayOfObjectsToCSV({data:results,columnDelimiter:'\t'});
+console.log(csv);
     var blob = new Blob([csv], {type: "text/csv;charset=utf-8"})
 
     //browser.downloads.download({url:URL.createObjectURL(blob),filename:"test.csv",saveAs:true});
